@@ -40,10 +40,10 @@ def build_parser():
             metavar='PRINT_ITERATIONS')
     parser.add_argument('--checkpoint-output',
             dest='checkpoint_output', help='checkpoint output format, e.g. output%%s.jpg',
-            metavar='OUTPUT', default='output%%s.jpg')
+            metavar='OUTPUT', default="output%%s.jpg")
     parser.add_argument('--checkpoint-iterations', type=int,
             dest='checkpoint_iterations', help='checkpoint frequency',
-            metavar='CHECKPOINT_ITERATIONS', default= ITERATIONS)
+            metavar='CHECKPOINT_ITERATIONS')
     parser.add_argument('--width', type=int,
             dest='width', help='output width',
             metavar='WIDTH')
@@ -114,7 +114,7 @@ def main():
     if options.checkpoint_output and "%s" not in options.checkpoint_output:
         parser.error("To save intermediate images, the checkpoint output "
                      "parameter must contain `%s` (e.g. `foo%s.jpg`)")
-    # counter = 0
+    counter = 0
     for iteration, image in stylize(
         network=options.network,
         initial=initial,
@@ -133,7 +133,8 @@ def main():
         if iteration is not None:
             if options.checkpoint_output:
                 output_file = options.checkpoint_output % iteration
-                # counter += 1
+                print "counter: ", counter
+                counter += 1
                 # print output_file
                 # print type(output_file)
                 # imsave(options.output + str(counter) + ".jpg", image)
