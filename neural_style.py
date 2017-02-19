@@ -114,7 +114,7 @@ def main():
     if options.checkpoint_output and "%s" not in options.checkpoint_output:
         parser.error("To save intermediate images, the checkpoint output "
                      "parameter must contain `%s` (e.g. `foo%s.jpg`)")
-    counter = 0
+    # counter = 0
     for iteration, image in stylize(
         network=options.network,
         initial=initial,
@@ -133,10 +133,10 @@ def main():
         if iteration is not None:
             if options.checkpoint_output:
                 output_file = options.checkpoint_output % iteration
-                counter += 1
-                print output_file
-                print type(output_file)
-                imsave(options.output + str(counter) + ".jpg", image)
+                # counter += 1
+                # print output_file
+                # print type(output_file)
+                # imsave(options.output + str(counter) + ".jpg", image)
         else:
             output_file = options.output
         if output_file:
