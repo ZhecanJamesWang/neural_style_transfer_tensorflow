@@ -136,7 +136,7 @@ def main():
                 counter += 1
                 print output_file
                 print type(output_file)
-                imsave(output_file + str(counter) + ".jpg", image)
+                imsave(options.output + str(counter) + ".jpg", image)
         else:
             output_file = options.output
         if output_file:
